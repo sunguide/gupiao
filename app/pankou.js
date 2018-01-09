@@ -9,9 +9,17 @@ const stock = require(path.resolve(__dirname, "./../lib/stock"));
 class pankou {
     static async once(){
         let current = Date.now();
-        if (new Date().getHours() < 9 || new Date().getHours() > 15  || new Date().getDay() === 0 || new Date().getDay() === 6) {
-            console.log("单日尚未开市或者休市日");
-            // return;
+        if (new Date().getDay() === 0 || new Date().getDay() === 6) {
+            console.log("今日为休市日，阁下不妨等开市再来。");
+            return;
+        }
+        if(new Date().getHours() < 9){
+            console.log("当日尚未开市，可稍等一下。");
+            return;
+        }
+        if(new Date().getHours() > 15){
+            console.log("当日已经休市，不妨休息一下。");
+            return;
         }
         let results = await request.curl(`http://nuyd.eastmoney.com/EM_UBG_PositionChangesInterface/api/js?dtformat=HH:mm:ss&js=[(x)]&rows=10&cb=&page=1&_=${current}`,{dataType: 'json' });
 
