@@ -1,6 +1,6 @@
 {
   "name": "gupiao",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "专为程序员量身打造的炒股盯盘小工具",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "sunguide@qq.com",
   "license": "MIT",
   "bin": {
-    "gubiao": "bin/index.js"
+    "gupiao": "./bin/index.js"
   },
   "dependencies": {
     "chalk": "^2.3.0",

@@ -42,6 +42,11 @@ Usage: index [options]
     -h, --help     output usage information
 
 ```
+##example
+```js
+$ gupiao -r //查看股票行情异动情况
+  
+```
 
 
 ## Questions & Suggestions

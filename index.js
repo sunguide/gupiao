@@ -2,5 +2,5 @@
 
 // intro
 
-const app = require("./app/index");
+const app = require(__dirname + "./app/index");
 app.start();

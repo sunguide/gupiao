@@ -1,10 +1,11 @@
 const chalk = require("chalk");
 const moment = require("moment");
+const path = require("path");
 //cunstom libs
-const request = require("../lib/request");
-const helper = require("../lib/helper");
-const stock = require("../lib/stock");
-const cache = require("../lib/cache");
+const request = require(path.resolve(__dirname, "./../lib/request"));
+const helper = require(path.resolve(__dirname, "./../lib/helper"));
+const cache = require(path.resolve(__dirname, "./../lib/cache"));
+const stock = require(path.resolve(__dirname, "./../lib/stock"));
 class pankou {
     static async once(){
         let current = Date.now();

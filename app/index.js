@@ -1,18 +1,19 @@
 'use strict';
-const pankou = require("./pankou");
+const path = require("path");
+const pankou = require(path.resolve(__dirname,"./pankou"));
 class app {
     static start(){
         try{
             pankou.loop();
         }catch(err){
-            console.log(err);
+            // console.log(err);
         }
     }
     static pankou(){
         try{
             pankou.once();
         }catch(err){
-            console.log(err);
+            // console.log(err);
         }
 
     }
@@ -21,7 +22,7 @@ class app {
         try{
             pankou.loop();
         }catch(err){
-            console.log(err);
+            // console.log(err);
         }
     }
 

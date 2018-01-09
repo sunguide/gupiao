@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var fs = require("fs"),
-    path = process.cwd();
+    path = require("path");
 var program = require("commander");
 program
   .version('0.0.1')
@@ -9,7 +9,7 @@ program
 program.parse(process.argv);
 
 if (program.rocket) {
-    const app = require("../app/index");
+    const app = require(path.resolve(__dirname,"../app/index"));
     app.pankouLoop();
 }
 
