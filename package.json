@@ -1,0 +1,26 @@
+{
+  "name": "gupiao",
+  "version": "0.0.1",
+  "description": "stock 股票 ",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stock","股票","炒股"
+  ],
+  "author": "sunguide@qq.com",
+  "license": "ISC",
+  "bin": {
+    "gubiao": "bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.12.2",
+    "moment": "^2.20.1",
+    "superagent": "^3.8.2",
+    "superagent-charset": "^1.2.0",
+    "urllib": "^2.25.3"
+  }
+}
