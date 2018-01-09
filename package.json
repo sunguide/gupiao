@@ -1,7 +1,7 @@
 {
   "name": "gupiao",
   "version": "0.0.1",
-  "description": "stock 股票 ",
+  "description": "https://github.com/sunguide/gupiao.git",
   "main": "index.js",
   "scripts": {
     "start":"node index",
