@@ -7,27 +7,26 @@ var shell = require('shell');
 var bash = new shell( { chdir: __dirname } )
 var Table = require('cli-table2');
 
-// instantiate
-var table = new Table({
-  chars: { 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗'
-         , 'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝'
-         , 'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'
-         , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }
-});
-
-table.push(
-    ['foo', 'bar', 'frob', 'bar', 'frob', 'bar', 'frob', 'bar', 'baz']
-);
-table.push( ['frob', 'bar', 'frob', 'bar', 'frob', 'bar', '${frame}'])
-table.push( ['frob', 'bar', 'frob', 'bar', 'frob', 'bar', '${frame}'])
 // console.log(table.toString());return;
-const frames = ['-', '\\', '|', '/'];
+const frames = ['-', '0', '|', '/'];
 let i = 0;
 setInterval(() => {
-    const frame = frames[i = ++i % frames.length];
+    const f = frames[i = ++i % frames.length];
+// instantiate
+    var table = new Table({
+        chars: { 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗'
+            , 'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝'
+            , 'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'
+            , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }
+    });
 
-    logUpdate(eval('`'+ table.toString() + '`')+i);
-}, 80);
+    table.push(
+        ['foo', 'bar', 'frob', 'bar', 'frob', 'bar', 'frob', 'bar', 'baz']
+    );
+    table.push( ['frob', 'bar', 'frob', 'bar', 'frob', 'bar', f])
+    table.push( ['frob', 'bar', 'frob', 'bar', 'frob', 'bar', f])
+    logUpdate(eval('`'+ table.toString() + '`'));
+}, 1000);
 
 return;
 setInterval(function(){

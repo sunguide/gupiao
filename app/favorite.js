@@ -40,7 +40,7 @@ class favorite {
             collums.push("最低价");
             collums.push("开盘价");
             collums.push("收盘价");
-            collums.push("成交量");
+            collums.push("成交额");
             table = new Table({
                 style:{border:[]}
                 // chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''}
@@ -50,18 +50,19 @@ class favorite {
             for(let i = 0;i< quotes.length;i++){
                 let item = quotes[i];
                 let changes = item.change > 0 ? 1:(item.change<0?-1:0);
+                item.current  = parseFloat(item.current).toFixed(2);
                 switch (changes) {
                     case 1:
                         item.name = chalk.red(item.name);
                         item.current = chalk.red(item.current);
                         item.change = chalk.red(item.change.toFixed(2));
-                        item.percentage = chalk.red(item.percentage.toFixed(2));
+                        item.percentage = chalk.red((item.percentage * 100).toFixed(2) + "%");
                         break;
                     case -1:
                         item.name = chalk.green(item.name);
                         item.current = chalk.green(item.current);
-                        item.change = chalk.green(item.change);
-                        item.percentage = chalk.green(item.percentage);
+                        item.change = chalk.green(item.change.toFixed(2));
+                        item.percentage = chalk.green((item.percentage * 100).toFixed(2) + "%");
                         break;
                   default:
 
@@ -70,7 +71,9 @@ class favorite {
                 item.high = item.high - item.pre_close ? chalk.red(item.high):chalk.green(item.high);
                 item.low = item.low - item.pre_close ? chalk.red(item.low):chalk.green(item.low);
                 item.open = item.open - item.pre_close ? chalk.red(item.open):chalk.green(item.open);
-                item.close = item.close - item.pre_close ? chalk.red(item.close):chalk.green(item.close);
+                if(typeof item.close != "string"){
+                    item.close = item.close - item.pre_close > 0 ? chalk.red(item.close):chalk.green(item.close);
+                }
                 collums = [];
                 collums.push(item.name);
                 collums.push(item.current);
@@ -79,8 +82,8 @@ class favorite {
                 collums.push(item.high);
                 collums.push(item.low);
                 collums.push(item.open);
-                collums.push(Math.random());
-                collums.push((item.volume / 10000).toFixed(0) + "万");
+                collums.push(item.close);
+                collums.push((item.volume / 100000000) > 0 ? ((item.volume / 100000000).toFixed(2) + "亿"):((item.volume / 100000000).toFixed(0) + "万"));
                 // console.log(collums.length)
                 table.push(collums);
 
@@ -104,18 +107,19 @@ class favorite {
                     continue;
                 }
                 let quote = await stock.getQuote(helper.getFullStockCode(item));
+
                 quote = {
                     "name":quote[0],
                     "current":quote[3],
                     "pre_close":quote[2],
                     "change":quote[3] - quote[2],
-                    "percentage":(quote[3] - quote[2]) / (100 * quote[2]),
+                    "percentage":(quote[3] - quote[2]) / quote[2],
                     "open":quote[1],
                     "high":quote[4],
                     "low":quote[5],
-                    "close": hours > 15 ? quote[3] :"交易中",
+                    "close": helper.isTradeTime() ? "交易中": parseFloat(quote[3]).toFixed(2),
                     "volume": quote[9]
-                }
+                };
                 quotes.push(quote);
             }
         }
