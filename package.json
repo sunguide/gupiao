@@ -3,10 +3,6 @@
   "version": "0.0.7",
   "description": "专为程序员量身打造的炒股盯盘小工具",
   "main": "index.js",
-  "scripts": {
-    "start": "node index",
-    "test": "echo \"ok\" && exit 1"
-  },
   "keywords": [
     "stock",
     "股票",
@@ -26,7 +22,8 @@
     "moment": "^2.20.1",
     "superagent": "^3.8.2",
     "superagent-charset": "^1.2.0",
-    "urllib": "^2.25.3"
+    "urllib": "^2.25.3",
+    "eslint": "^4.0.0"
   },
   "files": [
     "app",
@@ -35,6 +32,10 @@
     "lib",
     "index.js"
   ],
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"ok\" && exit 1"
+  },
   "ci": {
     "version": "8, 9"
   },
