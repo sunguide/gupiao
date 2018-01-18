@@ -36,10 +36,12 @@ Usage: index [options]
 
   Options:
 
-    -V, --version  output the version number
-    -r, --rocket   盘中异动实时监控
-    --about        关于
-    -h, --help     output usage information
+    -V, --version             输出版本号
+    -r, --rocket              盘中异动实时监控
+    add, --add <items>        添加股票 例如：gupiao add 600100
+    remove, --remove <items>  删除股票 例如：gupiao remove 600100
+    list, --list              股票列表
+    --about                   关于
 
 ```
 ##example
