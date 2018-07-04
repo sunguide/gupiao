@@ -2,7 +2,7 @@ const chalk = require("chalk");
 const moment = require("moment");
 const path = require("path");
 const logUpdate = require("log-update");
-const Table = require('cli-table2');
+const Table = require('cli-table3');
 //cunstom libs
 const request = require(path.resolve(__dirname, "./../lib/request"));
 const helper = require(path.resolve(__dirname, "./../lib/helper"));

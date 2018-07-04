@@ -5,7 +5,7 @@ var logUpdate = require("log-update");
 var shell = require('shell');
 // Initialization
 var bash = new shell( { chdir: __dirname } )
-var Table = require('cli-table2');
+var Table = require('cli-table3');
 
 // console.log(table.toString());return;
 const frames = ['-', '0', '|', '/'];
